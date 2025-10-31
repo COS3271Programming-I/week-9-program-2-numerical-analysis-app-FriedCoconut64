@@ -1,0 +1,50 @@
+package myMain;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.io.FileNotFoundException;
+import java.io.DataInput;
+import java.io.File;
+
+	public class MainClass {
+		static Scanner userinput = new Scanner(System.in);
+		public static void main(String[] args) throws FileNotFoundException {
+			String fileName = "C:\\Users\\Vanst\\OneDrive\\Data.txt";
+			File textFile = new File(fileName);
+			Scanner in = new Scanner(textFile);
+			int count = 0;
+			double sum = 0;
+			double largest = Double.NEGATIVE_INFINITY;
+			double smallest = Double.POSITIVE_INFINITY;
+			
+			while (in.hasNextDouble()) {
+				double number = in.nextDouble();
+				count++;
+				sum += number;
+				if (number > largest) {
+					largest = number;
+				}
+				if (number < smallest) {
+					smallest = number;
+				}
+			}
+		
+			//Calculate mean and range from raw data
+			double mean = (count > 0) ? sum/count : 0;
+			double range = (count > 0) ? largest - smallest : 0;
+			
+			System.out.println("Quantity of numbers: " + count);
+			System.out.println("Mean of all numbers: " + mean);
+			System.out.println("Largest number: " + largest);
+			System.out.println("Smallest number: " + smallest);
+			System.out.println("Range: " + range);
+			
+		in.close();	
+        System.out.println("\nProgram ended ...");
+    }
+}
